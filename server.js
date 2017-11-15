@@ -3,13 +3,13 @@
 //--------------------------------------
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
+// var path = require("path");
 
 //--------------------------------------
 //Routing
 //--------------------------------------
-var apiRoutes = require('./app/routing/apiRoutes.js');
-var htmlRoutes = require('./app/routing/htmlRoutes.js');
+var apiRoutes = require("./app/routing/apiRoutes.js");
+var htmlRoutes = require("./app/routing/htmlRoutes.js");
 
 //--------------------------------------
 //Set up App

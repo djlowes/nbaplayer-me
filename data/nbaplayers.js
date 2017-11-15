@@ -1,5 +1,4 @@
-
-var players =
+var players = 
 [
   {
   "name":"Test",
