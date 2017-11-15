@@ -8,8 +8,8 @@ var path = require("path");
 //--------------------------------------
 //Routing
 //--------------------------------------
-var apiRoutes = require('./app/routing/api-routes.js');
-var htmlRoutes = require('./app/routing/html-routes.js');
+var apiRoutes = require('./app/routing/apiRoutes.js');
+var htmlRoutes = require('./app/routing/htmlRoutes.js');
 
 //--------------------------------------
 //Set up App
