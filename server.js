@@ -3,13 +3,12 @@
 //--------------------------------------
 var express = require("express");
 var bodyParser = require("body-parser");
-// var path = require("path");
 
 //--------------------------------------
 //Routing
 //--------------------------------------
-var apiRoutes = require("./app/routing/apiRoutes.js");
-var htmlRoutes = require("./app/routing/htmlRoutes.js");
+var apiRoutes = require("./app/routing/apiRoutes");
+var htmlRoutes = require("./app/routing/htmlRoutes");
 
 //--------------------------------------
 //Set up App
@@ -17,19 +16,14 @@ var htmlRoutes = require("./app/routing/htmlRoutes.js");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-
 //--------------------------------------
 //Set up Express to handle data parsing
 //--------------------------------------
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
-
-//--------------------------------------
-//Routing map
-//--------------------------------------
-apiRoutes(app);
-htmlRoutes(app);
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 //--------------------------------------
 //Listener
