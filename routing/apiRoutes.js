@@ -1,8 +1,13 @@
+//--------------------------------------
+//Dependencies
+//--------------------------------------
 var player = require("./data/nbaplayers.js")
+var path = require("path");
 
-/*-------------------------------//
-          API Routes
-//-------------------------------*/
+//--------------------------------------
+//Enable API routing and comparison logic
+//--------------------------------------
+function apiRoutes(app) {
 app.get("/api/friends", function(req, res) {
   return res.json(player);
 });
@@ -17,3 +22,9 @@ app.post("/api/friends", function(req, res) {
   * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both `5-3` and `3-5` as `2`, and so on.
   * The closest match will be the user with the least amount of difference.*/
 });
+}
+
+//--------------------------------------
+//Enable API routing
+//--------------------------------------
+module.exports = apiRoutes;
