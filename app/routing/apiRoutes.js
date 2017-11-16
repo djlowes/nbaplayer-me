@@ -1,7 +1,7 @@
 //--------------------------------------
 //Dependencies
 //--------------------------------------
-var players = require("../../data/nbaplayers")
+var players = require("../data/nbaplayers")
 var express = require("express");
 var router = express.Router();
 var path = require('path');
@@ -10,22 +10,46 @@ var path = require('path');
 //Enable API routing and comparison logic
 //--------------------------------------
 router.get("/", function(req, res) {
-  console.log("can you see this?")
-  console.log(players)
   return res.json(players);
 });
 
-router.post("/api/scores", function(req, res) {
-  /*Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
-  * With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the `totalDifference`.
-    * Example:
-      * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
-      * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
-      * Total Difference: **2 + 1 + 2 =** **_5_**
-  * Remember to use the absolute value of the differences. Put another way: no negative solutions! Your app should calculate both `5-3` and `3-5` as `2`, and so on.
-  * The closest match will be the user with the least amount of difference.*/
-});
+router.post("/", function(req, res) {
+  var user = {
+    name: req.body.name,
+    photo: req.body.photo,
+    scores: []
+  };
+  //Hacky way to get correct values from input (previously returning array of 20 with every second being NaN)
+  var scoresArrayOld = [];
+  for (var i = 0; i < req.body.scores.length; i++) { scoresArrayOld.push(parseInt(req.body.scores[i]))}
+  var scoresArray = [];
+  for (var i = 0; i < scoresArrayOld.length; i = i + 2) { scoresArray.push(scoresArrayOld[i])};
+  user.scores = scoresArray;
 
+  //Comparison logic
+  var scoreComparisionArray = [];
+  for (var i = 0; i < players.length; i++) {
+    var currentComparison = 0;
+    for (var j = 0; j < user.scores.length; j++) {
+      currentComparison += Math.abs(user.scores[j] - players[i].scores[j]);
+      console.log(currentComparison)
+    }
+    // Push each comparison between friends to array
+    scoreComparisionArray.push(currentComparison);
+  }
+  // Determine the best match using the postion of best match in the players array
+  var playerPosition = 0; // assume its the first player to start
+  for (var i = 1; i < scoreComparisionArray.length; i++) {
+    // Lower number in comparison difference means better match
+    if (scoreComparisionArray[i] <= scoreComparisionArray[playerPosition]) {
+      playerPosition = i;
+    }
+  }
+  // If same score, last player will always be disaplyed
+  var yourNBAPlayer = players[playerPosition];
+  // Reply with a JSON object of the best match
+  res.json(yourNBAPlayer);
+});
 //--------------------------------------
 //Enable API routing
 //--------------------------------------
