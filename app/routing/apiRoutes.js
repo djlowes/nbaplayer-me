@@ -19,6 +19,7 @@ router.post("/", function(req, res) {
     photo: req.body.photo,
     scores: []
   };
+
   //Hacky way to get correct values from input (previously returning array of 20 with every second being NaN)
   var scoresArrayOld = [];
   for (var i = 0; i < req.body.scores.length; i++) { scoresArrayOld.push(parseInt(req.body.scores[i]))}
