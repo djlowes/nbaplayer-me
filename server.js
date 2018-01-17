@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
+app.use(express.static(__dirname + '/app/public'));
 
 //--------------------------------------
 //Listener

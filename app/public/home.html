@@ -7,28 +7,34 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
 	<div class="container">
+		<div id="spaceJam">
 		<div class="jumbotron">
-			<img src="https://media.giphy.com/media/l0OWiMGpoC6apZFXG/giphy.gif">
-      <h1 class="">Which NBA Player Are You?</h1>
+			<!-- <img src="https://media.giphy.com/media/l0OWiMGpoC6apZFXG/giphy.gif">
+			<img src="https://media.giphy.com/media/2Fazg4XrLLmoGqwMg/giphy.gif">
+			<img src="https://media.giphy.com/media/xT9Ign41rI9T0MXHkk/giphy.gif"> -->
+			<div id="imgContainer">
+			<img id="gif" src="https://media.giphy.com/media/3oEdv2qNBprY4gDxMk/giphy.gif">
+			</div>
+      <h1 class="texty" id="heading">Which NBA Player Are You?</h1>
 			<hr>
-			<h2 class="">Answer a few basic questions</h2>
-			<h2 class="">Then find out which NBA player you are!</h2>
+			<h2 class="texty">Answer a few basic questions and find out which NBA player you are!</h2>
 			<br>
-			<div class="">
-				<a href="/survey"><button type="button" class="btn btn-lg btn-primary"><h4><span class="glyphicon glyphicon-list-alt"></span> Go to Survey</h4></button></a>
+			<div class="texty">
+				<a href="/survey"><button type="button" class="btn btn-lg btn-primary" id="but" ><h4><span class="glyphicon glyphicon-list-alt"></span> Go to Survey</h4></button></a>
 			</div>
 
 		</div>
 
 	    <footer class="footer">
 	      <div class="container">
-		        <p><a href="/api/friends">API NBA Player List</a> | <a href="https://github.com/djlowes/nbaplayer-me">GitHub Repo</a></p>
+		        <p><a href="/api">API NBA Player List</a> | <a href="https://github.com/djlowes/nbaplayer-me">GitHub Repo</a></p>
 	      </div>
 	    </footer>
-
+	</div>
 	</div>
 
 </body>
