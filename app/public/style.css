@@ -2,10 +2,13 @@
 
 #matchName {
   text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size: 4em;
 }
 
 #matchImg {
   text-align: center;
+  margin-left: 100
 }
 
 #spaceJam {
@@ -31,4 +34,9 @@
 
 #heading {
   font-family: 'Indie Flower', cursive;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
 }
